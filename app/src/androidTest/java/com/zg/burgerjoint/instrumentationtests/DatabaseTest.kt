@@ -36,7 +36,7 @@ class DatabaseTest {
     fun insertIntoDatabaseTest() {
         val burger: BurgerVO = getDummyBurger()
         burgerDao.insert(burger)
-                assert(burgerDao.findBurgerById(burger.burgerId).value?.burgerId == burger.burgerId)
+        assert(burgerDao.findBurgerById(burger.burgerId).value?.burgerId == burger.burgerId)
     }
 
     // Prepare Necessary Data
