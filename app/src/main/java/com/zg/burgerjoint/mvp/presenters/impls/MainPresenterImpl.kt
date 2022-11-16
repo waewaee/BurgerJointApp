@@ -3,18 +3,20 @@ package com.zg.burgerjoint.mvp.presenters.impls
 import android.widget.ImageView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.zg.burgerjoint.data.model.BurgerModel
 import com.zg.burgerjoint.data.model.impls.BurgerModelImpl
 import com.zg.burgerjoint.data.vos.BurgerVO
+import com.zg.burgerjoint.mvp.presenters.AbstractBasePresenter
 import com.zg.burgerjoint.mvp.presenters.MainPresenter
 import com.zg.burgerjoint.mvp.views.MainView
 
 class MainPresenterImpl : MainPresenter, BaseAppPresenterImpl<MainView>() {
 
-    private val mBurgerModel = BurgerModelImpl
+    var mBurgerModel : BurgerModel = BurgerModelImpl
 
-    override fun onTapAddToCart(burger: BurgerVO, burgerImageView: ImageView) {
+    override fun onTapAddToCart(burger: BurgerVO, burgerImageView : ImageView) {
         mBurgerModel.addItemToCart(burger)
-        mView.animateAddBurgerToCart(burger, burgerImageView)
+        mView.addBurgerToCart(burger, burgerImageView)
     }
 
     override fun onTapCart() {
@@ -33,7 +35,7 @@ class MainPresenterImpl : MainPresenter, BaseAppPresenterImpl<MainView>() {
             })
     }
 
-    override fun onTapBurger(burger: BurgerVO,burgerImageView: ImageView) {
-        mView.navigateToBurgerDetailsScreenWithAnimation(burgerId = burger.burgerId, burgerImageView = burgerImageView)
+    override fun onTapBurger(burger: BurgerVO, burgerImageView: ImageView) {
+        mView.navigateToBurgerDetailsScreen(burgerId = burger.burgerId, burgerImageView = burgerImageView)
     }
 }

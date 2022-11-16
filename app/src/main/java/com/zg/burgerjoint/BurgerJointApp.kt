@@ -2,7 +2,6 @@ package com.zg.burgerjoint
 
 import android.app.Application
 import com.zg.burgerjoint.data.model.impls.BurgerModelImpl
-import com.zg.burgerjoint.data.vos.BurgerVO
 import com.zg.burgerjoint.dummy.getDummyBurgers
 import com.zg.burgerjoint.persistence.BurgerJointDatabase
 
