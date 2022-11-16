@@ -10,6 +10,7 @@ import com.zg.burgerjoint.data.model.BurgerModel
 import com.zg.burgerjoint.data.model.impls.BurgerModelImpl
 import com.zg.burgerjoint.data.model.impls.MockBurgerModelImpl
 import com.zg.burgerjoint.data.vos.BurgerVO
+import com.zg.burgerjoint.dummy.getDummyBurgers
 import com.zg.burgerjoint.mvp.views.MainView
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
@@ -32,6 +33,7 @@ class MainPresenterImplTest {
 
     private lateinit var mBurgerModel: BurgerModel
 
+    // Set Up Objects
     @Before
     fun setUpPresenter() {
         MockKAnnotations.init(this)
@@ -45,7 +47,33 @@ class MainPresenterImplTest {
     }
 
 
+    @Test
+    fun onTapAddToCart_callAddBurgerToCart() {
+        mPresenter.onTapAddToCart(getDummyBurger(), getDummyImageView())
+        verify {
+            mView.addBurgerToCart(getDummyBurger(), getDummyImageView())
+        }
+    }
 
+    @Test
+    fun onTapCart_callNavigateToCartScreen() {
+        mPresenter.onTapCart()
+        verify {
+            mView.navigateToCartScreen()
+        }
+    }
+
+    @Test
+    fun onTapBurger_callNavigateToBurgerDetails() {
+
+        mPresenter.onTapBurger(getDummyBurger(), getDummyImageView())
+        verify {
+            mView.navigateToBurgerDetailsScreen(getDummyBurger().burgerId, getDummyImageView())
+        }
+    }
+
+
+    // Prepare Necessary Objects
     companion object {
 
         fun getMockLifeCycleOwner() : LifecycleOwner{
@@ -71,30 +99,7 @@ class MainPresenterImplTest {
     }
 
 
-    @Test
-    fun onTapAddToCart_callAddBurgerToCart() {
-        mPresenter.onTapAddToCart(getDummyBurger(), getDummyImageView())
-        verify {
-            mView.addBurgerToCart(getDummyBurger(), getDummyImageView())
-        }
-    }
 
-//    @Test
-//    fun onTapCart_callNavigateToCartScreen() {
-//        mPresenter.onTapCart()
-//        verify {
-//            mView.navigatetoCartScreen()
-//        }
-//    }
-//
-//    @Test
-//    fun onTapBurger_callNavigateToBurgerDetails() {
-//
-//        mPresenter.onTapBurger(getDummyBurger(), getDummyImageView())
-//        verify {
-//            mView.navigateToBurgerDetailsScreen(getDummyBurger().burgerId, getDummyImageView())
-//        }
-//    }
 //
 //    @Test
 //    fun onUIReady_callDisplayBurgerList_callDisplayCountInCart() {
