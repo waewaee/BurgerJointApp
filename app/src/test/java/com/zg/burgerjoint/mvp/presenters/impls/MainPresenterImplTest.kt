@@ -64,7 +64,7 @@ class MainPresenterImplTest {
     fun onTapCart_callNavigateToCartScreen() {
         mPresenter.onTapCart()
         verify {
-            mView.navigateToCartScreen()
+            mView.navigatetoCartScreen()
         }
     }
 
@@ -82,15 +82,15 @@ class MainPresenterImplTest {
         }
     }
 
-    @Test
-    fun onUIReady_callDisplayBurgerList_callDisplayCountInCart() {
-        val lifeCycleOwner = mock(LifecycleOwner::class.java)
-        val lifeCycleRegistry = LifecycleRegistry(lifeCycleOwner)
-        lifeCycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
-        `when`(lifeCycleOwner.lifecycle).thenReturn(lifeCycleRegistry)
-        mPresenter.onUIReady(lifeCycleOwner)
-        verify {
-            mView.displayBurgerList(getDummyBurgers())
-        }
-    }
+//    @Test
+//    fun onUIReady_callDisplayBurgerList_callDisplayCountInCart() {
+//        val lifeCycleOwner = mock(LifecycleOwner::class.java)
+//        val lifeCycleRegistry = LifecycleRegistry(lifeCycleOwner)
+//        lifeCycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
+//        `when`(lifeCycleOwner.lifecycle).thenReturn(lifeCycleRegistry)
+//        mPresenter.onUIReady(lifeCycleOwner)
+//        verify {
+//            mView.displayBurgerList(getDummyBurgers())
+//        }
+//    }
 }
