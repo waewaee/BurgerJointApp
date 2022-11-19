@@ -43,7 +43,7 @@ open class LoginSuccessTest {
     }
 
     companion object {
-        const val TEST_USER_NAME = "Zaw Htet Naing"
+        const val TEST_USER_NAME = "Wae Waee"
         const val TEST_PASSWORD = "123456"
     }
 }

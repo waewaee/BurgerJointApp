@@ -158,8 +158,8 @@ class GameActivity : AppCompatActivity() {
         ivGameBurger.setOnTouchListener { view , motionEvent ->
             when(motionEvent.action){
                 MotionEvent.ACTION_DOWN ->{
-                    springAnimationY.cancel()
-                    springAnimationX.cancel()
+//                    springAnimationY.cancel()
+//                    springAnimationX.cancel()
                     xPositionDiff = motionEvent.rawX - view.x
                     yPositionDiff = motionEvent.rawY - view.y
                 }
@@ -168,8 +168,8 @@ class GameActivity : AppCompatActivity() {
                     ivGameBurger.y = motionEvent.rawY - yPositionDiff
                 }
                 MotionEvent.ACTION_UP -> {
-                    springAnimationX.start()
-                    springAnimationY.start()
+//                    springAnimationX.start()
+//                    springAnimationY.start()
                 }
             }
             true

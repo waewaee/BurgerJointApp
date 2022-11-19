@@ -35,6 +35,7 @@ class DatabaseTest {
     @Test
     fun insertIntoDatabaseTest() {
         val burgerOne = BurgerVO()
+        burgerOne.burgerId = 1
         burgerOne.burgerName = "Chicken Burger"
         burgerOne.burgerDescription =
             "The hot chicken sandwich or simply \"hot chicken\" (Quebec French: sandwich chaud au poulet) is a type of chicken sandwich consisting of chicken, sliced bread, and gravy (which is generally poutine sauce). The sandwich is usually served with green peas and commonly found in Eastern Canadian cuisine. It's especially popular in Quebec and is often considered one of the province's staple dishes.[7][8] Since it is so commonly found in eateries of Quebec (Rôtisserie St-Hubert, Valentine, e.g.) and less seen outside the province, many Québécois regard it as a part of Quebec cuisine and believe it to have originated in the province.[7] This combination of chicken, gravy, and peas is known by its own term: galvaude,[7] seen in poutine galvaude.\n" +
@@ -47,7 +48,7 @@ class DatabaseTest {
         burgerOne.burgerImageUrl =
             "https://vignette.wikia.nocookie.net/simpsons-restaurants/images/2/20/Spicy_Clucker.png/revision/latest?cb=20131125185837"
         burgerDao.insert(burgerOne)
-        assert(burgerDao.findBurgerById(burgerOne.burgerId).value?.burgerId == burgerOne.burgerId)
+        assert(burgerDao.findBurgerByIdOneShot(burgerOne.burgerId).burgerId == burgerOne.burgerId)
     }
 
 
