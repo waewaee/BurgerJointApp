@@ -67,7 +67,7 @@ class MainPresenterImplTest {
     fun onTapCart_callNavigateToCartScreen() {
         mPresenter.onTapCart()
         verify {
-            mView.navigatetoCartScreen()
+            mView.navigateToCartScreen()
         }
     }
 
